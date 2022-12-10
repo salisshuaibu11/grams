@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { Popover, Transition } from "@headlessui/react";
 import { Container } from "./Container";
 
-import { Fragment, useRef } from "react";
+import { Fragment } from "react";
 
 function CloseIcon(props: any) {
   return (
@@ -142,7 +142,7 @@ export function Header() {
   return (
     <header className="pointer-events-none relative z-50 flex flex-col">
       <div
-        className="top-0 z-10 h-16 pt-6"
+        className="top-0 z-10 h-16 pt-2"
       >
         <Container
           className="top-[var(--header-top,theme(spacing.6))] w-full"
