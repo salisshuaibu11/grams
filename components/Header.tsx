@@ -49,7 +49,7 @@ function MobileNavItem({href, children}: any) {
 function MobileNavigation(props: any) {
   return (
     <Popover {...props}>
-      <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
+      <Popover.Button className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:hover:ring-white/20">
         Menu
         <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
       </Popover.Button>
@@ -150,7 +150,8 @@ export function Header() {
           style={{ position: 'var(--header-inner-position)' }}
         >
           <div className="relative flex gap-4">
-            <div className="flex flex-1 justify-end md:justify-center ">
+            <div className="flex flex-1 justify-between md:justify-center bg-primary lg:bg-transparent p-2 lg:p-0 lg:rounded-none rounded-full">
+              <Image className="lg:hidden block" src="/logo.svg" alt="Grams Logo" width={100} height={100}/>
               <MobileNavigation className="pointer-events-auto md:hidden" />
               <DesktopNavigation />
             </div>
