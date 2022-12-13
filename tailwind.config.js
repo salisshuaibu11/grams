@@ -5,7 +5,23 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'feature-img': "url('/images/feature.png')",
+      },
+      colors: {
+        primary: '#07352E',
+        primaryLight: '#076B5C',
+        secondary: '#17BF5F',
+      }
+    },
+    fontFamily  : {
+      body: [
+        'IBM Plex Sans',
+        'Manrope',
+        'sans-serif',
+      ],
+    }
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/aspect-ratio'), require('@tailwindcss/forms'),],
 }

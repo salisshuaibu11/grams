@@ -126,7 +126,7 @@ function NavItem({ href, children }: any) {
 
 function DesktopNavigation() {
   return (
-    <nav className="pointer-events-auto hidden md:w-[50rem] md:flex items-center justify-between rounded-full bg-[#07352E] px-6 py-5 text-sm font-medium text-white shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur">
+    <nav className="pointer-events-auto hidden md:w-[50rem] md:flex items-center justify-between rounded-full bg-primary px-6 py-5 text-sm font-medium text-white shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur">
       <Image src="/logo.svg" alt="Grams Logo" width={100} height={100}/>
       <ul className="flex">
         <NavItem href="/services">Services</NavItem>
