@@ -1,4 +1,5 @@
-import Image from "next/image"
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 const navigation = {
   company: [
@@ -34,6 +35,7 @@ const navigation = {
 }
 
 export function Footer() {
+  const Router = useRouter();
   return (
     <footer className="bg-primary" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -42,14 +44,6 @@ export function Footer() {
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="pb-8 xl:grid xl:grid-cols-5 xl:gap-8">
           <div className="grid grid-cols-2 gap-8 xl:col-span-10">
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-2xl font-medium text-white">Header</h3>
-                <p className="mt-4 space-y-4 text-white/80">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare cursus sed nunc eget dictum  Sed ornare cursus sed nunc eget dictumd nunc eget dictum  Sed ornare cursus sed nunc eget dictum  
-                </p>
-              </div>
-            </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <h3 className="text-2xl font-medium text-white">Company</h3>
@@ -67,7 +61,9 @@ export function Footer() {
                   ))}
                 </ul>
               </div>
-              <div className="mt-12 md:mt-0 text-white">
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div className="md:mt-0 text-white col-start-1 xl:col-start-2 xl:text-right">
                 <h3 className="text-2xl font-medium">Contact Us</h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.legal.map((item) => (
@@ -90,7 +86,7 @@ export function Footer() {
           </div>
           <form className="mt-4 sm:flex sm:max-w-md lg:mt-0">
             <div className="rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-              <button type="button" className="transition-all delay-100 inline-flex items-center rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-black shadow-sm hover:bg-green-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Dashboard Login</button>
+              <button onClick={() => Router.push("/login")} type="button" className="transition-all delay-100 inline-flex items-center rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-black shadow-sm hover:bg-green-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Dashboard Login</button>
             </div>
           </form>
         </div>

@@ -125,6 +125,7 @@ function NavItem({ href, children }: any) {
 }
 
 function DesktopNavigation() {
+  const Router = useRouter();
   return (
     <nav className="pointer-events-auto hidden md:w-[50rem] md:flex items-center justify-between rounded-full bg-primary px-6 py-5 text-sm font-medium text-white shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur">
       <Image src="/logo.svg" alt="Grams Logo" width={100} height={100}/>
@@ -133,7 +134,7 @@ function DesktopNavigation() {
         <NavItem href="/about">About Us</NavItem>
         <NavItem href="/blog">Blog</NavItem>
       </ul>
-      <button type="button" className="transition-all delay-100 inline-flex items-center rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-black shadow-sm hover:bg-green-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Login</button>
+      <button onClick={() => Router.push("/login")} type="button" className="transition-all delay-100 inline-flex items-center rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-black shadow-sm hover:bg-green-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Login</button>
     </nav>
   )
 }

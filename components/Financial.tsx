@@ -1,12 +1,11 @@
-import Image from "next/image"
 
 export function Financial() {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-7xl py-12 px-4 text-center sm:px-6 lg:px-8 lg:py-24">
         <div className="space-y-12">
-          <div className="space-y-6 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-xl">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">We are unlocking financial inclusion for the African Farmer</h2>
+          <div className="space-y-6 sm:mx-auto sm:max-w-xl sm:space-y-4 lg:max-w-2xl">
+            <h2 className="text-3xl font-bold tracking-wider sm:text-5xl">We are unlocking financial inclusion for the African Farmer</h2>
             <p className="text-md text-gray-500">
               We provide tailored financial services to smallholder farmers in Africa, Allowing them access to banking and credit services without the need for a physical bank branch. With GRAMS, we take banking to the rural farmland.
             </p>
