@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useRouter } from "next/router";
 
 function Eye(props: any) {
   const { className, onClick } = props;
@@ -24,6 +25,8 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisibility, setPasswordVisibility] = useState(false);
+
+  const Router = useRouter();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -107,7 +110,8 @@ export default function Login() {
 
             <div>
               <button
-                type="submit"
+                type="button"
+                onClick={() => Router.push("/home")}
                 className="flex w-full justify-center rounded-md border border-transparent bg-primary py-2 px-4 text-sm font-medium text-white hover:text-white/80 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 Sign in
