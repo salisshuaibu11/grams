@@ -1,19 +1,21 @@
-import { Fragment, ReactNode, useState } from 'react'
-import { Dialog, Menu, Transition } from '@headlessui/react'
+import { Fragment, ReactNode, useState } from 'react';
+import { useRouter } from 'next/router';
+import { Dialog, Menu, Transition } from '@headlessui/react';
 import {
   Bars3BottomLeftIcon,
   ChevronDownIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-
 import { HomeIcon, CustomerIcon, TransactionIcon, PaymentIcon } from '../svgs'
+import { classNames } from '../../libs/helpers'
+import Link from 'next/link';
 
 const navigation = [
-  { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-  { name: 'Customer', href: '#', icon: CustomerIcon, current: false },
-  { name: 'Transactions', href: '#', icon: TransactionIcon, current: false },
-  { name: 'Requests & Payments', href: '#', icon: PaymentIcon, current: false }
+  { name: 'Dashboard', href: '/home', icon: HomeIcon, current: true },
+  { name: 'Customer', href: '/customers', icon: CustomerIcon, current: false },
+  { name: 'Transactions', href: '/transactions', icon: TransactionIcon, current: false },
+  { name: 'Requests & Payments', href: '/payments', icon: PaymentIcon, current: false }
 ]
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -21,9 +23,6 @@ const userNavigation = [
   { name: 'Sign out', href: '#' },
 ]
 
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(' ')
-}
 
 interface ILayout {
   children: ReactNode;
@@ -31,7 +30,8 @@ interface ILayout {
 }
 
 export default function Layout({children, title}: ILayout) {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { pathname } = useRouter();
 
   return (
     <>
@@ -90,27 +90,35 @@ export default function Layout({children, title}: ILayout) {
                   </div>
                   <div className="mt-5 h-0 flex-1 overflow-y-auto">
                     <nav className="space-y-1 px-2">
-                      {navigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.current
-                              ? 'bg-gray-300 text-white'
-                              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                            'group flex items-center px-2 py-2 text-base font-medium rounded-md'
-                          )}
-                        >
-                          <item.icon
-                            className={classNames(
-                              item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
-                              'mr-4 flex-shrink-0 h-6 w-6'
-                            )}
-                            aria-hidden="true"
-                          />
-                          {item.name}
-                        </a>
-                      ))}
+                      {navigation.map((item) => {
+                        const isActive = pathname === item.href;
+                        return (
+                          <Link
+                            href={item.href}
+                            key={item.href}
+                            legacyBehavior
+                          >
+                            <a
+                              href={item.href}
+                              className={classNames(
+                                isActive
+                                  ? 'bg-gray-300 text-white'
+                                  : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                'group flex items-center px-2 py-2 text-base font-medium rounded-md'
+                              )}
+                            >
+                              <item.icon
+                                className={classNames(
+                                  isActive ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
+                                  'mr-4 flex-shrink-0 h-6 w-6'
+                                )}
+                                aria-hidden="true"
+                              />
+                              {item.name}
+                            </a>
+                          </Link>
+                        )
+                      })}
                     </nav>
                   </div>
                 </Dialog.Panel>
@@ -135,25 +143,33 @@ export default function Layout({children, title}: ILayout) {
             </div>
             <div className="flex flex-1 flex-col overflow-y-auto">
               <nav className="flex-1 space-y-1 py-4">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={classNames(
-                      item.current ? 'bg-slate-300 text-white/70' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'group flex items-center px-2 py-2 text-sm font-medium'
-                    )}
-                  >
-                    <item.icon
+                {navigation.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link
+                      legacyBehavior
+                      href={item.href}
+                      key={item.name}
+                    >
+                    <a
+                      href={item.href}
                       className={classNames(
-                        item.current ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
-                        'mr-3 flex-shrink-0 h-6 w-6'
+                        isActive ? 'bg-slate-300 text-white/70' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        'group flex items-center px-2 py-2 text-sm font-medium'
                       )}
-                      aria-hidden="true"
-                    />
-                    {item.name}
-                  </a>
-                ))}
+                    >
+                      <item.icon
+                        className={classNames(
+                          isActive ? 'text-gray-300' : 'text-gray-400 group-hover:text-gray-300',
+                          'mr-3 flex-shrink-0 h-6 w-6'
+                        )}
+                        aria-hidden="true"
+                      />
+                      {item.name}
+                    </a>
+                    </Link>
+                  )
+                })}
               </nav>
             </div>
           </div>

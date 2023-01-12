@@ -29,7 +29,7 @@ export default function Home() {
           <h2 className="text-primary text-2xl font-bold">Quick Overview</h2>
           <a href="" className="underline">filter by date</a>
         </header>
-        <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-4">
           {transactions.map((transaction) => (
             <li
               key={transaction.name}
@@ -44,7 +44,9 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        <Table />
+        <div>
+          <Table />
+        </div>
       </Layout>
     </>
   )
